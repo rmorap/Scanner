@@ -3,6 +3,8 @@ import re
 import codecs
 import os
 import sys
+from tkinter import *
+from tkinter.filedialog import askopenfilename 
 
 reservadas = ['HELP','ASYNC','AWAIT','AND','OR','AS','ASSERT','BREAK'
 'CLASS','CONTINUE','DEF','DEL','FOR','FROM','GLOBAL','IF','ELIF','ELSE',
@@ -55,30 +57,17 @@ def t_error(t):
 	print("caracter ilegal"+t.value[0])
 	t.lexer.skip(1)
 
-def buscarFicheros(directorio):
-	ficheros = []
-	numArchivo = ''
-	respuesta = False
-	cont = 1
-	
-	for base, dirs, files in os.walk(directorio):
-		ficheros.append(files)
-	for file in files:
-		print(str(cont)+". "+file)
-		cont = cont + 1
-	while respuesta == False:
-		numArchivo = input('\n Numero del test: ')
-		for file in files:
-			if file == files[int(numArchivo)-1]:
-				respuesta = True
-				break
-	print('Has escogido \'%s\' \n' %files[int(numArchivo)-1])
+def t_WhiteSpaces(t):
+    r'\s'
+    t.value = str(t.value)
+    pass
 
-	return files[int(numArchivo)-1]
-
-directorio = 'directorio/'
-archivo = buscarFicheros(directorio)
-dir_t = directorio+archivo
+raiz = Tk()
+raiz.title('Scanner')
+raiz.resizable(0,0)
+filename = askopenfilename()
+dir_t = filename
+print('\n'+'Has escogido: '+ filename+'\n')
 fp = codecs.open(dir_t,"r","utf-8")
 cadena = fp.read()
 fp.close()
@@ -89,3 +78,4 @@ while True:
 	tok = analizador.token()
 	if not tok:break
 	print(tok)
+
