@@ -9,10 +9,8 @@ reservadas = ['HELP','ASYNC','AWAIT','AND','OR','AS','ASSERT','BREAK'
 'IMPORT','IN','IS','NOT','PASS','PRINT','RETURN','TRUE','FALSE','NONE',
 'WHILE']
 tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
-		'ASSIGN','NE','LT','LTE','GT','GTE',
-		'LPARENT', 'RPARENT','COMMA','SEMMICOLOM',
-		'DOT','UPDATE'
-		]
+'ASSIGN','NE','LT','LTE','GT','GTE','LPARENT', 'RPARENT','COMMA',
+'SEMMICOLOM','DOT','UPDATE']
 
 #reservadas = {
 #	'help':'HELP',
