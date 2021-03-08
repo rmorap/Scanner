@@ -1,2 +1,5 @@
-n=7
-print(n)
+def imprimir(n):
+    print(n)
+
+a = 7
+imprimir(a)

@@ -12,7 +12,7 @@ reservadas = ['HELP','ASYNC','AWAIT','AND','OR','AS','ASSERT','BREAK'
 'WHILE']
 tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 'ASSIGN','NE','LT','LTE','GT','GTE','LPARENT', 'RPARENT','COMMA',
-'SEMMICOLOM','DOT','UPDATE']
+'COLON','SEMMICOLOM','DOT','UPDATE']
 
 t_ignore = '\t '
 t_PLUS = r'\+'
@@ -28,6 +28,7 @@ t_GTE = r'>='
 t_LPARENT = r'\('
 t_RPARENT = r'\)'
 t_COMMA = r','
+t_COLON = r':'
 t_SEMMICOLOM = r';'
 t_DOT = r'\.'
 t_UPDATE = r':='
