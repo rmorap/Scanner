@@ -12,40 +12,6 @@ tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 'ASSIGN','NE','LT','LTE','GT','GTE','LPARENT', 'RPARENT','COMMA',
 'SEMMICOLOM','DOT','UPDATE']
 
-#reservadas = {
-#	'help':'HELP',
-#	'async':'ASYNC',
-#	'await': 'AWAIT',
-#	'and':'AND',
-#	'or':'OR',
-#	'as':'AS',
-#	'assert':'ASSERT',
-#	'break':'BREAK',
-#	'class':'CLASS',
-#	'continue':'CONTINUE',
-#	'def':'DEF',
-#	'del':'DEL',
-#	'for':'FOR',
-##	'from':'FROM',
-#	'global':'GLOBAL',
-#	'if':'IF',
-#	'elif':'ELIF',
-#	'else':'ELSE',
-#	'import':'IMPORT',
-#	'in':'IN',
-#	'is':'IS',
-#	'not':'NOT',
-#	'pass':'PASS',
-#	'print':'PRINT',
-#	'return':'RETURN',
-#	'true':'TRUE',
-#	'false':'FALSE',
-#	'none':'NONE',
-#	'while':'WHILE'
-#}
-
-#tokens = tokens+list(reservadas.values())
-
 t_ignore = '\t '
 t_PLUS = r'\+'
 t_MINUS = r'\-'
