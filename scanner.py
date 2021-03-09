@@ -12,26 +12,80 @@ reservadas = ['HELP','ASYNC','AWAIT','AND','OR','AS','ASSERT','BREAK'
 'WHILE']
 tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 'ASSIGN','NE','LT','LTE','GT','GTE','LPARENT', 'RPARENT','COMMA',
-'COLON','SEMMICOLOM','DOT','UPDATE']
+'COLON','SEMMICOLOM','DOT','UPDATE','REAL']
 
-t_ignore = '\t '
-t_PLUS = r'\+'
-t_MINUS = r'\-'
-t_TIMES = r'\*'
-t_DIVIDE = r'/'
-t_ASSIGN = r'='
-t_NE = r'<>'
-t_LT = r'<'
-t_LTE = r'<='
-t_GT = r'>'
-t_GTE = r'>='
-t_LPARENT = r'\('
-t_RPARENT = r'\)'
-t_COMMA = r','
-t_COLON = r':'
-t_SEMMICOLOM = r';'
-t_DOT = r'\.'
-t_UPDATE = r':='
+
+
+f = open("tokens.txt", "r")
+print(55)
+while(True):
+    linea = f.readline()
+    if(linea == r'\+'):
+        t_PLUS = linea
+    elif(linea == r'\d+\.\d'):
+        def t_REAL(t):
+            r'\d+'
+            return t
+    elif(linea == r'='):
+        t_ASSIGN = r'='
+    elif(linea == r'\d+'):
+        def t_NUMBER(t):
+            r'\d+'
+            return t
+    elif(linea == r'[a-zA-Z_][a-zA-Z0-9_]*'):
+        def t_ID(t):
+            r'[a-zA-Z_][a-zA-Z0-9_]*'
+            if t.value.upper() in reservadas:
+                t.value = t.value.upper()
+            return t
+    
+    elif(linea == '\-'):
+        t_MINUS = r'\-'
+    elif(linea == '\*'):
+        t_TIMES = '\*'
+    elif(linea == r'/'):
+        t_DIVIDE = r'/'
+    elif(linea == r'<>'):
+        t_NE = r'<>'
+    elif(linea == r'<'):
+        t_LT = r'<'
+    elif(linea == r'<='):
+        t_LTE = r'<='
+    elif(linea == r'>'):
+        t_GT = r'>'
+    elif(linea == r'>='):
+        t_GTE = r'>='
+    if(linea == r'\('):
+        t_LPARENT = r'\('
+    elif(linea == r'\)'):
+        t_RPARENT = r'\)'
+    elif(linea == r','):
+        t_COMMA = r','
+    elif(linea == r':'):
+        t_COLON = r':'
+    elif(linea == r';'):
+        t_SEMMICOLOM = r';'
+    elif(linea == r'\.'):
+        t_DOT = r'\.'
+    elif(linea == r':='):
+        t_UPDATE = r':='
+    elif(linea == r'\n+'):
+        def t_newline(t):
+            r'\n+'
+            t.lexer.lineno += len(t.value)
+    elif(linea == r'\#.*'):
+        def t_COMMENT(t):
+            r'\#.*'
+            pass
+    elif(linea == r'\s'):
+        def t_WhiteSpaces(t):
+            r'\s'
+            t.value = str(t.value)
+            pass
+    if not linea:
+        break
+f.close()
+
 
 def t_ID(t):
 	r'[a-zA-Z_][a-zA-Z0-9_]*'
@@ -41,27 +95,15 @@ def t_ID(t):
 
 	return t
 
-def t_newline(t):
-	r'\n+'
-	t.lexer.lineno += len(t.value)
 
-def t_COMMENT(t):
-	r'\#.*'
-	pass
-
-def t_NUMBER(t):
-	r'\d+'
-	t.value = int(t.value)
-	return t
 
 def t_error(t):
 	print("caracter ilegal"+t.value[0])
 	t.lexer.skip(1)
 
-def t_WhiteSpaces(t):
-    r'\s'
-    t.value = str(t.value)
-    pass
+
+
+
 
 raiz = Tk()
 raiz.title('Scanner')

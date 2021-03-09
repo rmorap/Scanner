@@ -4,5 +4,6 @@ import numpy as np
 def imprimir(n):
     print(n)
 
-a = 7
+l = 88
+a = 7.7
 imprimir(a)
