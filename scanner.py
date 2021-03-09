@@ -17,11 +17,11 @@ tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 
 
 f = open("tokens.txt", "r")
-print(55)
 while(True):
     linea = f.readline()
     if(linea == r'\+'):
-        t_PLUS = linea
+        t_PLUS = r'\+'
+        print(linea)
     elif(linea == r'\d+\.\d'):
         def t_REAL(t):
             r'\d+'
@@ -87,13 +87,6 @@ while(True):
 f.close()
 
 
-def t_ID(t):
-	r'[a-zA-Z_][a-zA-Z0-9_]*'
-	if t.value.upper() in reservadas:
-		t.value = t.value.upper()
-		t.type = t.value
-
-	return t
 
 
 
