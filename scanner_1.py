@@ -28,11 +28,15 @@ fp = codecs.open(dir_t,"r","utf-8")
 cadena = fp.read()
 fp.close()
 cadena_real = cadena.split('\n')
+cadena_c = []
+for i in range(len(cadena_real)):
+    cadena_c += cadena_real[i].split(' ')
+print(cadena_c)
 tokens = []
-for j in range(len(cadena_real)):
+for j in range(len(cadena_c)):
     for k,v in data.items():
-        for m in re.finditer(v, cadena_real[j]):
-            l = '%02d-%02d: %s' % (m.start(), m.end(), m.group(0))
+        for m in re.finditer(v, cadena_c[j]):
+            l =  m.group(0)
             tokens.append(l+', '+k)
 
 for i in range(len(tokens)):
