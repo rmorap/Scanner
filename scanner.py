@@ -23,7 +23,6 @@ while(True):
     linea = linea.strip()
     if(linea == r'\+'):
         t_PLUS = r'\+'
-        print(linea)
     elif(linea == r'\d+\.\d'):
         def t_REAL(t):
             r'\d+'
@@ -40,7 +39,6 @@ while(True):
             if t.value.upper() in reservadas:
                 t.value = t.value.upper()
             return t
-
     elif(linea == '\-'):
         t_MINUS = r'\-'
     elif(linea == '\*'):
@@ -88,12 +86,9 @@ while(True):
         break
 f.close()
 
-
-
 def t_error(t):
 	print("caracter ilegal"+t.value[0])
 	t.lexer.skip(1)
-
 
 raiz = Tk()
 raiz.title('Scanner')
