@@ -1,24 +1,21 @@
-\d+\.\d
-=
-\+
-\d+
-\t
-\-
-\*
-[a-zA-Z_][a-zA-Z0-9_]*
-/
-<>
-<
-<=
->
->=
-\(
-\)
-,
-:
-;
-\.
-:=
-\n+
-\s
-\#.*
+DEF : (\W|^)def(\W|$)
+t_COMMENT : \#.*
+ID : [a-zA-Z_][a-zA-Z0-9_]* 
+t_NUMBER : \d+
+t_LPARENT : \( 
+t_RPARENT : \) 
+t_ignore : \t
+t_PLUS : \+
+t_MINUS : \-
+t_TIMES : \* 
+t_DIVIDE : / 
+t_ASSIGN : = 
+t_NE : <> 
+t_LT : < 
+t_LTE : <= 
+t_GT : > 
+t_GTE : >= 
+t_COMMA : \, 
+t_SEMMICOLOM : \; 
+t_DOT : \. 
+t_COMMENT : \#.*
