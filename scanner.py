@@ -16,7 +16,7 @@ tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 
 
 cd = dirname(__file__)
-path = join(cd, "./tokens.txt")
+path = join(cd, "./tokens2.txt")
 f = open(path, 'r')
 while(True):
     linea = f.readline()
@@ -90,14 +90,9 @@ f.close()
 
 
 
-
-
 def t_error(t):
 	print("caracter ilegal"+t.value[0])
 	t.lexer.skip(1)
-
-
-
 
 
 raiz = Tk()
