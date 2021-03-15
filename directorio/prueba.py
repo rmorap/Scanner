@@ -1,9 +1,6 @@
-import numpy as np
-
-# Funcion imprimir
+#aasasa
 def imprimir(n):
     print(n)
 
-l = 88
-a = 7.7
+a = 7
 imprimir(a)
