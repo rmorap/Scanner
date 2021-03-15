@@ -1,10 +1,10 @@
 import ply.lex as lex
 import re
 import codecs
-import os
+from os.path import dirname, join
 import sys
 from tkinter import *
-from tkinter.filedialog import askopenfilename 
+from tkinter.filedialog import askopenfilename
 
 reservadas = ['HELP','ASYNC','AWAIT','AND','OR','AS','ASSERT','BREAK'
 'CLASS','CONTINUE','DEF','DEL','FOR','FROM','GLOBAL','IF','ELIF','ELSE',
@@ -15,10 +15,12 @@ tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 'COLON','SEMMICOLOM','DOT','UPDATE','REAL']
 
 
-
-f = open("tokens.txt", "r")
+cd = dirname(__file__)
+path = join(cd, "./tokens.txt")
+f = open(path, 'r')
 while(True):
     linea = f.readline()
+    linea = linea.strip()
     if(linea == r'\+'):
         t_PLUS = r'\+'
         print(linea)
@@ -38,7 +40,7 @@ while(True):
             if t.value.upper() in reservadas:
                 t.value = t.value.upper()
             return t
-    
+
     elif(linea == '\-'):
         t_MINUS = r'\-'
     elif(linea == '\*'):
@@ -114,4 +116,3 @@ while True:
 	tok = analizador.token()
 	if not tok:break
 	print(tok)
-
