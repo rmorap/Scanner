@@ -5,7 +5,9 @@ import os
 import sys
 from tkinter import *
 from tkinter.filedialog import askopenfilename 
+from tkinter import messagebox
 
+messagebox.showinfo(message="Seleccione archivo con tokens", title="Tokens")
 filename = askopenfilename()
 dir_t = filename
 print('\n'+'Has escogido: '+ filename+'\n')
@@ -18,7 +20,7 @@ with open(dir_t, 'r') as archivo:
         data[key.strip()] = value.strip()
 
 print(data)
-
+messagebox.showinfo(message="Seleccione archivo python", title="Codigo Python")
 filename = askopenfilename()
 dir_t = filename
 print('\n'+'Has escogido: '+ filename+'\n')
