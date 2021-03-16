@@ -1,23 +1,29 @@
+# Autores:
+# Richard Alejandro Mora Perilla & Carlos Felipe Niño Rodriguéz
+
 import ply.lex as lex
-import re
 import codecs
-from os.path import dirname, join
-import sys
 from tkinter import *
 from tkinter.filedialog import askopenfilename
+from tkinter import messagebox
 
+# Palabras reservadas
 reservadas = ['HELP','ASYNC','AWAIT','AND','OR','AS','ASSERT','BREAK'
 'CLASS','CONTINUE','DEF','DEL','FOR','FROM','GLOBAL','IF','ELIF','ELSE',
 'IMPORT','IN','IS','NOT','PASS','PRINT','RETURN','TRUE','FALSE','NONE',
 'WHILE']
+# Tokens junto con las palabras reservadas
 tokens = reservadas+['ID','NUMBER','PLUS','MINUS','TIMES','DIVIDE',
 'ASSIGN','NE','LT','LTE','GT','GTE','LPARENT', 'RPARENT','COMMA',
 'COLON','SEMMICOLOM','DOT','UPDATE','REAL']
-
-
-cd = dirname(__file__)
-path = join(cd, "./tokens2.txt")
-f = open(path, 'r')
+# Selección del archivo con los tokens
+messagebox.showinfo(message="Seleccione archivo con los tokens", title="Archivo de tokens")
+filename = askopenfilename()
+dir_t = filename
+print('\n'+'Has escogido: '+ filename+'\n')
+# Lectura del archivo
+f = open(dir_t, 'r')
+# Reconocimiento de los tokens
 while(True):
     linea = f.readline()
     linea = linea.strip()
@@ -85,23 +91,27 @@ while(True):
     if not linea:
         break
 f.close()
-
+# Función que detecta errores
 def t_error(t):
 	print("caracter ilegal"+t.value[0])
 	t.lexer.skip(1)
-
+# Inicio de la clase TK()
 raiz = Tk()
 raiz.title('Scanner')
+# Selección del archivo que se deasea escanear
+messagebox.showinfo(message="Seleccione archivo con que desea escanear", title="Archivo a escanear")
 raiz.resizable(0,0)
 filename = askopenfilename()
 dir_t = filename
 print('\n'+'Has escogido: '+ filename+'\n')
+# Lectura del archivo
 fp = codecs.open(dir_t,"r","utf-8")
 cadena = fp.read()
 fp.close()
+# Inicio del lexer para entender las expresiones regulares
 analizador = lex.lex()
 analizador.input(cadena)
-
+# Impresión de los tokens
 while True:
 	tok = analizador.token()
 	if not tok:break
